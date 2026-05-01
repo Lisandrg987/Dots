@@ -1,0 +1,94 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #ffffff;
+}
+
+/* Píldora base para todos los módulos */
+#workspaces,
+#clock,
+#power-profiles-daemon,
+#battery,
+#pulseaudio,
+#tray {
+    background: #1c1c1e;
+    border-radius: 20px;
+    padding: 0 14px;
+    margin: 5px 3px;
+    color: #ffffff;
+    border: 1px solid #2e2e30;
+}
+
+/* Workspaces */
+#workspaces {
+    padding: 0 6px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #555555;
+    border-radius: 20px;
+    background: transparent;
+}
+
+#workspaces button.active {
+    background: #ffffff;
+    color: #1c1c1e;
+    border-radius: 20px;
+}
+
+#workspaces button:hover {
+    background: #2e2e30;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+/* Reloj */
+#clock {
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+/* Batería */
+#battery.warning {
+    color: #ffd60a;
+    border-color: #ffd60a;
+}
+
+#battery.critical {
+    color: #ff453a;
+    border-color: #ff453a;
+    animation: blink 1s linear infinite;
+}
+
+#battery.charging,
+#battery.full {
+    color: #30d158;
+    border-color: #30d158;
+}
+
+/* Audio */
+#pulseaudio.muted {
+    color: #444444;
+}
+
+/* Tray */
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+@keyframes blink {
+    to { color: rgba(255, 69, 58, 0.3); border-color: rgba(255, 69, 58, 0.3); }
+}
