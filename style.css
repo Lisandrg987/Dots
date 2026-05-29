@@ -1,0 +1,129 @@
+/* ══════════════════════════════════════
+   Waybar — Tesla-inspired / Text only
+   ══════════════════════════════════════ */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgb(12, 12, 14);
+    color: rgba(255, 255, 255, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ── Todos los módulos: planos ─────────── */
+#workspaces,
+#clock,
+#power-profiles-daemon,
+#battery,
+#pulseaudio,
+#tray {
+    background: transparent;
+    padding: 0 12px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 13px;
+}
+
+/* ── Workspaces ────────────────────────── */
+#workspaces {
+    padding: 0 6px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.22);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    transition: color 0.1s ease;
+}
+
+#workspaces button.active {
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 600;
+}
+
+#workspaces button:hover:not(.active) {
+    color: rgba(255, 255, 255, 0.50);
+}
+
+/* ── Separador visual entre grupos ────────
+   Línea vertical sutil en el lado derecho
+   del último módulo izquierdo             */
+#workspaces {
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    margin-right: 4px;
+    padding-right: 10px;
+}
+
+/* ── Reloj: el elemento más prominente ─── */
+#clock {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* ── Power profiles ────────────────────── */
+#power-profiles-daemon {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.40);
+    padding: 0 10px;
+}
+
+/* ── Batería ───────────────────────────── */
+#battery {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 13px;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #30d158;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffd60a;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff453a;
+    animation: blink 1s ease-in-out infinite;
+}
+
+/* ── Audio ─────────────────────────────── */
+#pulseaudio {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+#pulseaudio.muted {
+    color: rgba(255, 255, 255, 0.20);
+}
+
+/* ── Tray ──────────────────────────────── */
+#tray {
+    padding: 0 10px;
+    border-left: 1px solid rgba(255, 255, 255, 0.07);
+    margin-left: 4px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+@keyframes blink {
+    from { color: #ff453a; }
+    to   { color: rgba(255, 69, 58, 0.20); }
+}
