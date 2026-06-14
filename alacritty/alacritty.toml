@@ -1,0 +1,32 @@
+# --- CONFIGURACIÓN DE VENTANA ---
+[window]
+padding = { x = 10, y = 10 }
+dynamic_title = true
+opacity = 0.9 # Transparencia (0.0 a 1.0)
+
+# --- CONFIGURACIÓN DE FUENTE ---
+[font]
+size = 11.0
+
+[font.normal]
+family = "monospace" # Cambia por tu fuente instalada (ej. JetBrains Mono, Hack)
+style = "Regular"
+
+[font.bold]
+family = "monospace"
+style = "Bold"
+
+# --- PALETA DE COLORES (Tema Dark) ---
+[colors.primary]
+background = "0x1e1e1e"
+foreground = "0xd4d4d4"
+
+[colors.normal]
+black =   "0x1e1e1e"
+red =     "0xf44747"
+green =   "0x608b4e"
+yellow =  "0xdcdcaa"
+blue =    "0x569cd6"
+magenta = "0xc586c0"
+cyan =    "0x4fc1ff"
+white =   "0xd4d4d4"
