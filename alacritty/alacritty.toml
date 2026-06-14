@@ -2,7 +2,7 @@
 [window]
 padding = { x = 10, y = 10 }
 dynamic_title = true
-opacity = 0.9 # Transparencia (0.0 a 1.0)
+opacity = 0.5 # Transparencia (0.0 a 1.0)
 
 # --- CONFIGURACIÓN DE FUENTE ---
 [font]
