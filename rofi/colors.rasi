@@ -1,0 +1,30 @@
+/* ═══════════════════════════════════════════════════════
+   colors.rasi — paleta Liminal / Dreamcore
+   ═══════════════════════════════════════════════════════ */
+
+* {
+    /* Fondo principal — vidrio violeta oscuro, opacidad alta
+       para que el texto pastel se lea bien */
+    bg-surface:     rgba(54, 48, 74, 0.85);
+
+    /* Lift sutil para mode-switcher y filas alternas */
+    bg-topbar:      rgba(255, 255, 255, 0.04);
+
+    /* Highlight del item seleccionado — rosa muy tenue */
+    bg-selected:    rgba(255, 198, 224, 0.16);
+
+    /* Bordes — líneas de "vidrio" lila translúcido */
+    border-default: rgba(230, 210, 245, 0.20);
+    border-subtle:  rgba(230, 210, 245, 0.10);
+
+    /* Texto */
+    fg-primary:     #f4ecf9;
+    fg-secondary:   #cdb8e8;
+    fg-ghost:       rgba(207, 198, 220, 0.35);
+    fg-muted:       rgba(207, 198, 220, 0.50);
+
+    /* Acentos */
+    accent:         #ffc6e0;
+    col-urgent:     #ffb8c6;
+    col-active:     #b8f5cf;
+}

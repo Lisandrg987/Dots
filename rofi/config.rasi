@@ -1,0 +1,15 @@
+@theme "/home/lisandroga/.config/rofi/theme.rasi"
+
+configuration {
+    modi:                "drun,run,window";
+    show-icons:          true;
+    case-sensitive:      false;
+    matching:            "fuzzy";
+    tokenize:            true;
+    sort:                true;
+    sorting-method:      "fzf";
+    drun-display-format: "{name}";
+    drun-show-actions:   false;
+    disable-history:     false;
+    kb-cancel:           "Escape";
+}

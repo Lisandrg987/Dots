@@ -1,0 +1,291 @@
+/* ═══════════════════════════════════════════════════════
+   theme.rasi — layout y componentes visuales
+   Requiere: colors.rasi en el mismo directorio
+
+   Uso:
+     rofi -show drun -theme ~/.config/rofi/theme.rasi
+
+   O en config.rasi:
+     @theme "/home/TU_USUARIO/.config/rofi/theme.rasi"
+   ═══════════════════════════════════════════════════════ */
+
+@import "colors.rasi"
+
+/* ── Tipografía ─────────────────────────────────────────
+   JetBrains Mono: espacio entre caracteres natural,
+   legibilidad superior a SF Mono en pantallas medianas.
+   Tamaño 12 es el punto óptimo: compacto sin ser ilegible.
+   Weight 400 para lista, prompt usa 500 (bold suave).
+────────────────────────────────────────────────────── */
+* {
+    font: "JetBrains Mono 12";
+}
+
+/* ── Ventana ────────────────────────────────────────────
+   600px: ancho de "panel de control", no de launcher
+   genérico. Permite ver nombres largos sin truncar.
+   Centrada con anchor center. Sin border-radius agresivo
+   (2px máximo — solo para no parecer Windows XP).
+   Borde 1px: presente pero silencioso.
+────────────────────────────────────────────────────── */
+window {
+    background-color: @bg-surface;
+    border:           1px;
+    border-color:     @border-default;
+    border-radius:    2px;
+    width:            600px;
+    x-offset:         0;
+    y-offset:         0;
+    location:         center;
+    anchor:           center;
+    padding:          0px;
+}
+
+/* ── Estructura principal ───────────────────────────────
+   mainbox sin padding propio: cada hijo maneja su espacio.
+   Esto permite bordes internos precisos entre secciones.
+────────────────────────────────────────────────────── */
+mainbox {
+    background-color: transparent;
+    border:           0px;
+    padding:          0px;
+    spacing:          0px;
+    children:         [ mode-switcher, inputbar, listview ];
+}
+
+/* ── Selector de modos (drun / run / window) ────────────
+   Barra superior ultra delgada. Los modos como tabs
+   horizontales crean orientación espacial inmediata.
+   Borde inferior = separador de sección.
+────────────────────────────────────────────────────── */
+mode-switcher {
+    background-color: @bg-topbar;
+    border:           0px 0px 1px 0px;
+    border-color:     @border-subtle;
+    padding:          0px 10px;
+    spacing:          0px;
+}
+
+button {
+    background-color: transparent;
+    text-color:       @fg-ghost;
+    border:           0px 0px 2px 0px;
+    border-color:     transparent;
+    border-radius:    0px;
+    padding:          6px 10px;
+    font:             "JetBrains Mono 9";
+    /* letter-spacing no soportado en rasi, se compensa
+       con font size pequeño para look compacto */
+}
+
+button selected {
+    background-color: transparent;
+    text-color:       @accent;
+    border-color:     @accent;
+}
+
+/* ── Barra de búsqueda ──────────────────────────────────
+   El prompt "❯_" actúa como indicador visual de "modo
+   input activo". El símbolo ❯ viene del shell (fish/zsh),
+   crea continuidad mental entre terminal y launcher.
+   Padding asimétrico: más horizontal que vertical
+   para sensación de barra de comandos.
+────────────────────────────────────────────────────── */
+inputbar {
+    background-color: transparent;
+    border:           0px 0px 1px 0px;
+    border-color:     @border-subtle;
+    padding:          10px 14px;
+    spacing:          10px;
+    children:         [ prompt, entry, num-filtered-rows, textbox-num-sep, num-rows ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @accent;
+    font:             "JetBrains Mono 11";
+    /* El prompt hereda del inputbar — padding en padre */
+}
+
+entry {
+    background-color: transparent;
+    text-color:       @fg-primary;
+    placeholder:      "search...";
+    placeholder-color: @fg-ghost;
+    cursor:           text;
+    /* Sin padding: la alineación viene del inputbar */
+}
+
+/* ── Contador de resultados (ej: "4 / 248") ─────────────
+   Información útil, posicionada a la derecha,
+   color fantasma: presente pero no compite.
+────────────────────────────────────────────────────── */
+num-filtered-rows {
+    background-color: transparent;
+    text-color:       @fg-ghost;
+    font:             "JetBrains Mono 9";
+}
+
+textbox-num-sep {
+    background-color: transparent;
+    text-color:       @fg-ghost;
+    font:             "JetBrains Mono 9";
+    expand:           false;
+    str:              " / ";
+}
+
+num-rows {
+    background-color: transparent;
+    text-color:       @fg-ghost;
+    font:             "JetBrains Mono 9";
+}
+
+/* ── Lista de resultados ────────────────────────────────
+   8 líneas visibles: densidad informacional óptima.
+   Más líneas = fatiga de escaneo.
+   Menos = demasiados scrolls.
+   Sin scrollbar: elimina ruido visual, la navegación
+   es por teclado siempre.
+────────────────────────────────────────────────────── */
+listview {
+    background-color: transparent;
+    padding:          6px 0px;
+    lines:            8;
+    columns:          1;
+    spacing:          0px;
+    scrollbar:        false;
+    cycle:            true;
+    dynamic:          true;
+    fixed-height:     true;
+}
+
+/* ── Elemento de lista ──────────────────────────────────
+   El marcador lateral (2px) es la clave del diseño:
+   comunica "seleccionado" de forma mínima y precisa,
+   sin fondos gritones ni highlights de Windows.
+   El espaciado 14px horizontal da respiro de panel.
+────────────────────────────────────────────────────── */
+element {
+    background-color: transparent;
+    text-color:       @fg-secondary;
+    padding:          5px 14px;
+    spacing:          10px;
+    border:           0px 0px 0px 2px;
+    border-color:     transparent;
+    border-radius:    0px;
+    orientation:      horizontal;
+}
+
+/* Normal */
+element normal.normal {
+    background-color: transparent;
+    text-color:       @fg-secondary;
+    border-color:     transparent;
+}
+
+/* Seleccionado — el único momento del acento ── */
+element selected.normal {
+    background-color: @bg-selected;
+    text-color:       @fg-primary;
+    border-color:     @accent;
+}
+
+/* Urgente */
+element normal.urgent {
+    background-color: transparent;
+    text-color:       @col-urgent;
+    border-color:     transparent;
+}
+
+element selected.urgent {
+    background-color: @bg-selected;
+    text-color:       @col-urgent;
+    border-color:     @col-urgent;
+}
+
+/* Activo (ventanas activas en mode window) */
+element normal.active {
+    background-color: transparent;
+    text-color:       @col-active;
+    border-color:     transparent;
+}
+
+element selected.active {
+    background-color: @bg-selected;
+    text-color:       @col-active;
+    border-color:     @col-active;
+}
+
+/* Alterno — fondo ligeramente distinto para
+   ayudar al escaneo vertical en listas largas */
+element alternate.normal {
+    background-color: @bg-topbar;
+    text-color:       @fg-secondary;
+    border-color:     transparent;
+}
+
+element alternate.urgent {
+    background-color: @bg-topbar;
+    text-color:       @col-urgent;
+    border-color:     transparent;
+}
+
+element alternate.active {
+    background-color: @bg-topbar;
+    text-color:       @col-active;
+    border-color:     transparent;
+}
+
+/* ── Icono del elemento ─────────────────────────────────
+   16px: suficiente para orientación visual sin dominar.
+   Si no tienes Nerd Fonts activa, rofi ignora este bloque.
+────────────────────────────────────────────────────── */
+element-icon {
+    background-color: transparent;
+    size:             16px;
+    cursor:           inherit;
+}
+
+/* ── Texto del elemento ─────────────────────────────────
+   vertical-align 0.5 = centrado perfecto en la fila.
+   highlight marca los caracteres que coinciden con
+   el query — bold sin color extra.
+────────────────────────────────────────────────────── */
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    highlight:        bold;
+    vertical-align:   0.5;
+    cursor:           inherit;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────
+   Oculto por defecto (scrollbar: false en listview).
+   Si decides activarlo, usa este bloque.
+────────────────────────────────────────────────────── */
+scrollbar {
+    width:            2px;
+    border:           0px;
+    handle-color:     @border-default;
+    handle-width:     2px;
+    padding:          0px;
+    background-color: @bg-topbar;
+}
+
+/* ── Mensaje / sin resultados ───────────────────────────
+   Solo aparece cuando no hay matches. Mismo estilo
+   que la lista para consistencia visual.
+────────────────────────────────────────────────────── */
+message {
+    background-color: transparent;
+    border:           1px 0px 0px 0px;
+    border-color:     @border-subtle;
+    padding:          8px 14px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @fg-muted;
+    font:             "JetBrains Mono 10";
+    vertical-align:   0.5;
+}
