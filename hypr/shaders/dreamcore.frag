@@ -19,7 +19,7 @@ void main() {
     pixColor.rgb = mix(gray, pixColor.rgb, vibrancy);
 
     // Grano / ruido estático
-    float grainStrength = 0.05;
+    float grainStrength = 0.04;
     float noise = random(v_texcoord);
     pixColor.rgb += (noise - 0.5) * grainStrength;
 
