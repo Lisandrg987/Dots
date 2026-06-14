@@ -1,0 +1,122 @@
+/* ══════════════════════════════════════════════════════
+   Waybar — Liminal / Dreamcore aesthetic
+   ══════════════════════════════════════════════════════ */
+
+@define-color pastel-pink   #ffc6e0;
+@define-color pastel-blue   #b8e0f5;
+@define-color pastel-lilac  #cdb8e8;
+@define-color pastel-gray   #cfc6dc;
+@define-color glass-bg      rgba(54, 48, 74, 0.95);
+@define-color glass-border  rgba(230, 210, 245, 0.16);
+@define-color glow-soft     rgba(216, 200, 240, 0.18);
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: monospace;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @pastel-lilac;
+}
+
+#workspaces,
+#clock,
+#power-profiles-daemon,
+#battery,
+#pulseaudio,
+#tray {
+    background: @glass-bg;
+    border: 1px solid @glass-border;
+    border-radius: 20px 20px 0 0;
+    padding: 0 14px;
+    margin: 3px 4px 0 4px;
+    color: @pastel-lilac;
+    text-shadow: 0 0 8px @glow-soft;
+    box-shadow: 0 0 10px rgba(216, 200, 240, 0.10), inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+#workspaces {
+    padding: 0 6px;
+}
+#workspaces button {
+    padding: 0 9px;
+    background: transparent;
+    color: @pastel-gray;
+    text-shadow: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    border-radius: 0;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+#workspaces button.active {
+    color: @pastel-pink;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(255, 198, 224, 0.85);
+}
+#workspaces button:hover:not(.active) {
+    color: @pastel-blue;
+}
+
+#clock {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: @pastel-blue;
+    text-shadow: 0 0 10px rgba(184, 224, 245, 0.85);
+}
+
+#power-profiles-daemon {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: @pastel-gray;
+}
+
+#battery {
+    color: @pastel-blue;
+    letter-spacing: 1px;
+}
+#battery.charging,
+#battery.plugged {
+    color: #b8f5cf;
+    border-color: rgba(184, 245, 207, 0.85);
+}
+#battery.warning:not(.charging) {
+    color: #ffe9b0;
+    border-color: rgba(255, 233, 176, 0.90);
+}
+#battery.critical:not(.charging) {
+    color: #ffb8c6;
+    border-color: rgba(255, 184, 198, 1.0);
+    animation: blink 1.6s ease-in-out infinite;
+}
+
+#pulseaudio {
+    color: @pastel-pink;
+    letter-spacing: 1px;
+}
+#pulseaudio.muted {
+    color: rgba(207, 198, 220, 0.18);
+    text-shadow: none;
+    border-color: rgba(230, 210, 245, 0.4);
+    box-shadow: none;
+}
+
+#tray {
+    padding: 0 10px;
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+@keyframes blink {
+    from { opacity: 1.0; }
+    to   { opacity: 0.35; }
+}

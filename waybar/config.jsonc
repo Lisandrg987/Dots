@@ -1,0 +1,55 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 42,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "spacing": 0,
+    "exclusive": false,
+    "modules-left":   ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right":  ["power-profiles-daemon", "battery", "pulseaudio", "tray"],
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "all-outputs": false
+    },
+    "clock": {
+        "format":         "{:%a %d %b | %H:%M}",
+        "format-alt":     "{:%H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Perfil de energía: {profile}",
+        "format-icons": {
+            "default":     "Standard",
+            "performance": "Sport",
+            "balanced":    "Standard",
+            "power-saver": "Chill"
+        }
+    },
+    "battery": {
+        "bat": "BAT0",
+        "adapter": "AC0",
+        "interval": 15,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format":          "BAT {capacity}%",
+        "format-charging": "CHG {capacity}%",
+        "format-plugged":  "AC  {capacity}%",
+        "tooltip-format":  "{time} restante"
+    },
+    "pulseaudio": {
+        "format":       "VOL {volume}%",
+        "format-muted": "MUTE",
+        "on-click":     "pavucontrol"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    }
+}
